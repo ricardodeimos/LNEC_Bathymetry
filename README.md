@@ -13,20 +13,24 @@ If you want to try another image or another zip, make sure to change the name ac
 Let's say you want to run run_wings.sh with an image called Aveiro.tif in which the grid has 200 grid points:
 
 
-./Tiling.py -i ./K5_Sesimbra_zoom.tif  -u tile-zip-1 tile-zip-2 ... -u tile-zip-98 tile-zip-99----------------------> ./Tiling.py -i ./Aveiro.tif -u tile-zip-1 tile-zip-2 ... -u tile-zip-199 tile-zip-200
+./Tiling.py -i ./K5_Sesimbra_zoom.tif  -u tile-zip-1 tile-zip-2 ... -u tile-zip-98 tile-zip-99 ----------------------> ./Tiling.py -i ./Aveiro.tif -u tile-zip-1 tile-zip-2 ... -u tile-zip-199 tile-zip-200
 
 
 
 ./FFT_bath.py -i tile-zip-1 -o textfilebath_1.txt -a config_file.ini -t 13 --------------------> ./FFT_bath.py -i tile-zip-1 -o textfilebath_1.txt -a config_file.ini -t
+
 ./FFT_bath.py -i tile-zip-2 -o textfilebath_2.txt -a config_file.ini -t 13 --------------------> ./FFT_bath.py -i tile-zip-2 -o textfilebath_2.txt -a config_file.ini -t 13
 
 ...												... (more calls to FFT here than before)
 
 ./FFT_bath.py -i tile-zip-98 -o textfilebath_98.txt -a config_file.ini -t 13 ------------------> ./FFT_bath.py -i tile-zip-199 -o textfilebath_199.txt -a config_file.ini -t 13
+
 ./FFT_bath.py -i tile-zip-99 -o textfilebath_99.txt -a config_file.ini -t 13 ------------------> ./FFT_bath.py -i tile-zip-200 -o textfilebath_200.txt -a config_file.ini -t 13
 
 
-./Merge.py -i textfilebath_1.txt textfilebath_2.txt ... -i textfilebath_98.txt textfilebath_99.txt  ---> ./Merge.py -i textfilebath_1.txt textfilebath_2.txt ... -i textfilebath_199.txt textfilebath_200.txt
+./Merge.py -i textfilebath_1.txt textfilebath_2.txt ... -i textfilebath_98.txt textfilebath_99.txt  ---> 
+
+./Merge.py -i textfilebath_1.txt textfilebath_2.txt ... -i textfilebath_199.txt textfilebath_200.txt
 
 
 Now, if you run the bash script: run_wings_preprocessing.sh, there are going to be some errors with NaNs. Those are the errors that arrive when we use the preprocessing tools (calibration and speckle filter).
